@@ -32,7 +32,7 @@ BillingCycle.route('summary', (req, res, next) => {
     }
   ], (err, result) => {
     if(err) res.status(500).json({ errors: [err] })
-    res.json(result || { credit: 0, debt: 0 })
+    res.json(result[0] || { credit: 0, debt: 0 })
   })
 })
 

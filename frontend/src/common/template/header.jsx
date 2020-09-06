@@ -3,7 +3,7 @@ import React from 'react'
 export default props => {
   return (
     <header className="main-header">
-      <a href="/" className='logo'>
+      <a href="#" className='logo'>
         <span className="logo-mini"><b>my</b>m</span>
         <span className="logo-lg">
           <i className="fa fa-money"></i>
