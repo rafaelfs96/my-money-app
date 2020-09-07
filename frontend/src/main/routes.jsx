@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Redirect, HashRouter } from 'react-router-dom'
 
-import Dashboard from '../dashboard/dashboard'
+import Dashboard from '../dashboard/dashboard2'
 import BillingCycle from '../billingCycle/billingCycle'
 
 export default props => {

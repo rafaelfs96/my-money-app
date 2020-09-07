@@ -1,11 +1,9 @@
 import React from 'react'
 
-function Row(props) {
+export default props => {
   return (
-    <div className='row'>
+    <div className='tab-content'>
       {props.children}
     </div>
   )
 }
-
-export default Row

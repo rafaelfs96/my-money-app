@@ -14,7 +14,7 @@ export default props => {
       <div className='wrapper'>
         <Header />
         <Sidebar />
-        <div className="content-wrapper">
+        <div className='content-wrapper'>
           <Routes></Routes>
         </div>
         <Footer />
