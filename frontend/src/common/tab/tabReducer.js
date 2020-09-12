@@ -2,7 +2,7 @@ import { TAB_SELECTED, TAB_SHOWED } from '../../utils/actionNames'
 
 const initial_state = { selected: '', visible: {} }
 
-export default function(state = initial_state, action) {
+export default (state = initial_state, action) => {
   switch(action.type) {
     case TAB_SELECTED:
       return { ...state, selected: action.payload }

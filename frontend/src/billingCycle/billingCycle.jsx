@@ -12,13 +12,17 @@ import TabsContent from '../common/tab/tabsContent'
 import TabHeader from '../common/tab/tabHeader'
 import TabContent from '../common/tab/tabContent'
 
+import BillingCycleList from '../billingCycle/billingCycleList'
+import BillingCycleForm from '../billingCycle/billingCycleForm'
+
 import { selectTab, showTabs } from '../common/tab/tabActions'
+import { create } from './billingCycleActions'
 
 function BillingCycle (props) {
   useEffect(() => {
     props.selectTab('tabList')
     props.showTabs('tabList', 'tabCreate')
-  }, [])
+  }, [props])
 
   return (
     <React.Fragment>
@@ -33,10 +37,10 @@ function BillingCycle (props) {
           </TabsHeader>
           <TabsContent>
             <TabContent id='tabList'>
-              <h1>Lista</h1>
+              <BillingCycleList />
             </TabContent>
             <TabContent id='tabCreate'>
-              <h1>Incluir</h1>
+              <BillingCycleForm onSubmit={ props.create } />
             </TabContent>
             <TabContent id='tabUpdate'>
               <h1>Alterar</h1>
@@ -51,6 +55,8 @@ function BillingCycle (props) {
   )
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators({selectTab, showTabs}, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({
+  selectTab, showTabs, create
+}, dispatch)
 
 export default connect(null, mapDispatchToProps)(BillingCycle)
