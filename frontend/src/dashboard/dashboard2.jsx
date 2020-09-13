@@ -9,7 +9,7 @@ import Row from '../common/layout/row'
 
 const base_url = 'http://localhost:3003/api/'
 
-export default function Dashboard(props) {
+export default function Dashboard({}) {
   const [{credit, debt}, setSummary] = useState({credit: 0, debt: 0})
 
   useEffect(() => {
@@ -25,11 +25,11 @@ export default function Dashboard(props) {
       <Content>
         <Row>
           <ValueBox cols='12 4' color='green' icon='bank'
-            value={`R$ ${credit}`} text='Total de Créditos' />
+            value={`R$ ${ credit }`} text='Total de Créditos' />
           <ValueBox cols='12 4' color='red' icon='credit-card'
-            value={`R$ ${debt}`} text='Total de Débitos' />
+            value={`R$ ${ debt }`} text='Total de Débitos' />
           <ValueBox cols='12 4' color='blue' icon='money'
-            value={`R$ ${credit - debt}`} text='Valor Consolidado' />
+            value={`R$ ${ credit - debt }`} text='Valor Consolidado' />
         </Row>
       </Content>
     </React.Fragment>

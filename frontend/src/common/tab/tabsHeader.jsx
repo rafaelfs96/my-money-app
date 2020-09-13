@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default props => {
+export default ({children}) => {
   return (
     <ul className='nav nav-tabs'>
-      {props.children}
+      { children }
     </ul>
   )
 }

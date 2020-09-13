@@ -12,17 +12,13 @@ import TabsContent from '../common/tab/tabsContent'
 import TabHeader from '../common/tab/tabHeader'
 import TabContent from '../common/tab/tabContent'
 
-import BillingCycleList from '../billingCycle/billingCycleList'
-import BillingCycleForm from '../billingCycle/billingCycleForm'
+import List from '../billingCycle/billingCycleList'
+import Form from '../billingCycle/billingCycleForm'
 
-import { selectTab, showTabs } from '../common/tab/tabActions'
-import { create } from './billingCycleActions'
+import { create, update, remove, init } from './billingCycleActions'
 
-function BillingCycle (props) {
-  useEffect(() => {
-    props.selectTab('tabList')
-    props.showTabs('tabList', 'tabCreate')
-  }, [props])
+function BillingCycle ({init, create, update, remove}) {
+  useEffect(() => { init() }, [init])
 
   return (
     <React.Fragment>
@@ -37,16 +33,16 @@ function BillingCycle (props) {
           </TabsHeader>
           <TabsContent>
             <TabContent id='tabList'>
-              <BillingCycleList />
+              <List />
             </TabContent>
             <TabContent id='tabCreate'>
-              <BillingCycleForm onSubmit={ props.create } />
+              <Form onSubmit={ create } submitLabel='Incluir' submitClass='primary' />
             </TabContent>
             <TabContent id='tabUpdate'>
-              <h1>Alterar</h1>
+              <Form onSubmit={ update } submitLabel='Alterar' submitClass='info' />
             </TabContent>
             <TabContent id='tabDelete'>
-              <h1>Excluir</h1>
+              <Form onSubmit={ remove } submitLabel='Excluir' submitClass='danger' readOnly={ true } />
             </TabContent>
           </TabsContent>
         </Tabs>
@@ -55,8 +51,6 @@ function BillingCycle (props) {
   )
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-  selectTab, showTabs, create
-}, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ create, update, remove, init }, dispatch)
 
 export default connect(null, mapDispatchToProps)(BillingCycle)

@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Grid(props) {
+function Grid({cols, children}) {
   const toCssClasses = numbers => {
     const cols = numbers ? numbers.split(' ') : []
     let classes = ''
@@ -13,11 +13,11 @@ function Grid(props) {
     return classes
   }
 
-  const gridClasses = toCssClasses(props.cols || '12')
+  const gridClasses = toCssClasses(cols || '12')
 
   return (
     <div className={gridClasses}>
-      { props.children }
+      { children }
     </div>
   )
 }

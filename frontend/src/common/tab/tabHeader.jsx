@@ -7,17 +7,17 @@ import { selectTab } from './tabActions'
 
 import If from '../operator/If'
 
-function TabHeader(props) {
-  const isSelected = props.tab.selected === props.target
-  const isVisible = props.tab.visible[props.target]
+function TabHeader({tab, target, icon, label, selectTab}) {
+  const isSelected = tab.selected === target
+  const isVisible = tab.visible[target]
   return (
-    <If test={isVisible}>
+    <If test={ isVisible }>
       <li className={isSelected ? 'active' : ''}>
         <a href='#'
           data-toggle='tab'
-          data-target={props.target}
-          onClick={() => props.selectTab(props.target)}>
-          <i className={`fa fa-${props.icon}`}></i> {props.label}
+          data-target={ target }
+          onClick={ () => selectTab(target) }>
+          <i className={`fa fa-${icon}`}></i> { label }
         </a>
       </li>
     </If>

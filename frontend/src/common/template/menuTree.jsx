@@ -1,14 +1,14 @@
 import React from 'react'
 
-export default props => {
+export default ({icon, label, children}) => {
   return (
     <li className='treeview'>
       <a href='#'>
-        <i className={`fa fa-${props.icon}`}></i> {props.label}
+        <i className={`fa fa-${icon}`}></i><span>{label}</span>
         <i className='fa fa-angle-left pull-right'></i>
       </a>
       <ul className='treeview-menu'>
-        {props.children}
+        {children}
       </ul>
     </li>
   )

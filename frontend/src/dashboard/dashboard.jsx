@@ -9,12 +9,12 @@ import Content from '../common/template/content'
 import ValueBox from '../common/widget/valueBox'
 import Row from '../common/layout/row'
 
-function Dashboard(props) {
+function Dashboard({getSummary, summary}) {
   useEffect(() => {
-    props.getSummary()
+    getSummary()
   }, [])
 
-  const { credit, debt } = props.summary
+  const { credit, debt } = summary
   return (
     <React.Fragment>
       <ContentHeader title='Dashboard' small='Versao 1.0'/>

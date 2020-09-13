@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default props => {
+export default ({title, small}) => {
   return (
     <section className='content-header'>
-      <h1>{ props.title } <small>{ props.small }</small></h1>
+      <h1>{ title } <small>{ small }</small></h1>
     </section>
   )
 }

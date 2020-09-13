@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default props => {
+export default ({children}) => {
   return (
     <div className='nav-tabs-custom'>
-      {props.children}
+      { children }
     </div>
   )
 }

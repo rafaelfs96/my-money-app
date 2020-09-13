@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Row(props) {
+function Row({children}) {
   return (
     <div className='row'>
-      {props.children}
+      { children }
     </div>
   )
 }

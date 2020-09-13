@@ -8,9 +8,12 @@ import Header from '../common/template/header'
 import Sidebar from '../common/template/sidebar'
 import Footer from '../common/template/footer'
 
-export default props => {
+import Messages from '../common/msg/messages'
+
+export default ({}) => {
   return (
     <Router>
+      <Messages />
       <div className='wrapper'>
         <Header />
         <Sidebar />

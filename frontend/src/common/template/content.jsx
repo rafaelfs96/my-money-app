@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default props => {
+export default ({children}) => {
   return (
     <section className='content'>
-      { props.children }
+      { children }
     </section>
   )
 }

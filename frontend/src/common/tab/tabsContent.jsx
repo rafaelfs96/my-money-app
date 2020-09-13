@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default props => {
+export default ({children}) => {
   return (
     <div className='tab-content'>
-      {props.children}
+      { children }
     </div>
   )
 }

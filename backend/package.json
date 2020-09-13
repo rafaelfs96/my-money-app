@@ -5,7 +5,8 @@
   "main": "src/loader.js",
   "scripts": {
     "dev": "nodemon",
-    "prod": "pm2 start src/loader.js --name my-money-backend"
+    "prod": "pm2 start src/loader.js --name my-money-backend",
+    "stop": "pm2 delete my-money-backend"
   },
   "keywords": [],
   "author": "",

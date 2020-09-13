@@ -5,13 +5,13 @@ import { connect } from 'react-redux'
 
 import If from '../operator/If'
 
-function TabContent(props) {
-  const isSelected = props.tab.selected === props.id
-  const isVisible = props.tab.visible[props.id]
+function TabContent({tab, id, children}) {
+  const isSelected = tab.selected === id
+  const isVisible = tab.visible[id]
   return (
-    <If test={isVisible}>
-      <div id={props.id} className={`tab-pane ${isSelected ? 'active' : ''}`}>
-        {props.children}
+    <If test={ isVisible }>
+      <div id={ id } className={`tab-pane ${ isSelected ? 'active' : '' }`}>
+        { children }
       </div>
     </If>
   )
