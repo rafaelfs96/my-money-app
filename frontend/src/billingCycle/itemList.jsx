@@ -53,7 +53,7 @@ function ItemList({readOnly, field, list, showStatus, arrayInsert, arrayRemove, 
     <Grid cols={ cols }>
       <fieldset>
         <legend>{ legend }</legend>
-        <table className="table">
+        <table className='table'>
           <thead>
             <tr>
               <th>Nome</th>

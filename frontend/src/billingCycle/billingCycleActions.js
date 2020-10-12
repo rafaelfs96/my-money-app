@@ -6,11 +6,12 @@ import { showTabs, selectTab } from '../common/tab/tabActions'
 
 import { BILLING_CYCLES_FETCHED } from '../utils/actionNames'
 
-const BASE_URL = 'http://localhost:3003/api'
+import urls from '../utils/consts'
+
 const initial_values = { credits: [{}], debts: [{}] }
 
 export function getList() {
-  const request = axios.get(`${BASE_URL}/billing`)
+  const request = axios.get(`${urls.API_URL}/billing`)
   return {
     type: BILLING_CYCLES_FETCHED,
     payload: request
@@ -32,7 +33,7 @@ export function remove(values) {
 function submit(values, method) {
   return dispatch => {
     const id = values._id ? values._id : ''
-    axios[method](`${BASE_URL}/billing/${id}`, values)
+    axios[method](`${urls.API_URL}/billing/${id}`, values)
       .then(res => {
         toastr.success('Sucesso', 'Operacao Realizada com Sucesso')
         dispatch(init())

@@ -13,12 +13,12 @@ function TabHeader({tab, target, icon, label, selectTab}) {
   return (
     <If test={ isVisible }>
       <li className={isSelected ? 'active' : ''}>
-        <a href='#'
+        <button
           data-toggle='tab'
           data-target={ target }
           onClick={ () => selectTab(target) }>
           <i className={`fa fa-${icon}`}></i> { label }
-        </a>
+        </button>
       </li>
     </If>
   )

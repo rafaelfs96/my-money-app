@@ -1,3 +1,7 @@
+const dotenv = require('dotenv')
+
+dotenv.config()
+
 const port = 3003
 
 const bodyParser = require('body-parser')

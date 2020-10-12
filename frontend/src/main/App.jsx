@@ -1,27 +1,36 @@
 import '../common/template/dependencies'
-import React from 'react'
 
-import Routes from './routes'
-import { BrowserRouter as Router } from 'react-router-dom'
+import React, { useEffect } from 'react'
 
-import Header from '../common/template/header'
-import Sidebar from '../common/template/sidebar'
-import Footer from '../common/template/footer'
+import axios from 'axios'
 
-import Messages from '../common/msg/messages'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
-export default ({}) => {
-  return (
-    <Router>
-      <Messages />
-      <div className='wrapper'>
-        <Header />
-        <Sidebar />
-        <div className='content-wrapper'>
-          <Routes></Routes>
-        </div>
-        <Footer />
-      </div>
-    </Router>
-  )
+import Main from './Main'
+import Auth from '../auth/auth'
+import { validateToken } from '../auth/authActions'
+
+function App({ auth, validateToken, children }) {
+  useEffect(() => {
+    if(auth.user) {
+      validateToken(auth.user.token)
+    }
+  })
+
+  const isLoggedIn = () => {
+    if(auth.user && auth.validToken) {
+      axios.defaults.headers.common['authorization'] = auth.user.token
+      return <Main>{children}</Main>
+    } else if(!auth.user && !auth.validToken) {
+      return <Auth />
+    } else return false
+  }
+
+  return isLoggedIn()
 }
+
+const mapStateToProps = state => ({ auth: state.auth })
+const mapDispatchToProps = dispatch => bindActionCreators({ validateToken }, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
