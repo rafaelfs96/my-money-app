@@ -9,7 +9,7 @@ const AUTHSECRET = process.env.AUTHSECRET
 const sendErrorsFromDB = (res, dbErrors) => {
   const errors = []
   _.forIn(dbErrors.errors, error => errors.push(error.message))
-  return res.status(400).json({ errors: [errors] })
+  return res.status(400).json({ errors })
 }
 
 const login = (req, res, next) => {
@@ -20,8 +20,8 @@ const login = (req, res, next) => {
     if (err) return sendErrorsFromDB(res, err)
 
     else if (user && bcrypt.compareSync(password, user.password)) {
-      const token = jwt.sign(user, AUTHSECRET, { expiresIn: '1 day' })
       const { name, email } = user
+      const token = jwt.sign({ name, user }, AUTHSECRET, { expiresIn: '1 day' })
       res.json({ name, email, token })
     }
 
@@ -41,10 +41,10 @@ const signup = (req, res, next) => {
   const name = req.body.name || ''
   const email = req.body.email || ''
   const password = req.body.password || ''
-  const confirmPassword = req.body.confirmPassword || ''
-
+  const confirmPassword = req.body.confirm_password || ''
+  
   if (!email.match(emailRegex)) return res.status(400).send({ errors: ['this email is not valid'] })
-  if (!password.match(passwordRegex)) return res.status(400).send({ errors: ['this password is not valid'] })
+  // if (!password.match(passwordRegex)) return res.status(400).send({ errors: ['this password is not valid'] })
 
   const salt = bcrypt.genSaltSync()
   const passwordHash = bcrypt.hashSync(password, salt)

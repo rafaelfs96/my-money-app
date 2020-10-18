@@ -23,7 +23,7 @@ function Auth({ handleSubmit, login, signup }) {
 
   return (
     <div className='login-box'>
-      <div className='login-logo'>My money</div>
+      <div className='login-logo'><b>My</b> money</div>
       <div className='login-box-body'>
         <p className='login-box-mgs'>Bem Vindo!</p>
         <form onSubmit={handleSubmit(v => onSubmit(v))}>

@@ -1,11 +1,12 @@
 import React from 'react'
 import If from '../operator/If'
 
-export default ({ hide, type, placeholder, readOnly, icon }) => {
+export default ({ input, hide, type, placeholder, readOnly, icon }) => {
   return (
     <If test={ !hide }>
       <div className='form-group has-feedback'>
-        <input type={type}
+        <input { ...input }
+          type={type}
           className='form-control'
           placeholder={placeholder}
           readOnly={readOnly}

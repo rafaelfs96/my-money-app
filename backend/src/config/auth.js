@@ -3,7 +3,7 @@ const AUTHSECRET = process.env.AUTHSECRET
 
 module.exports = (req, res, next) => {
   //* CORS preflight request
-  if (req.method === 'OPTIONS') console.log()
+  if (req.method === 'OPTIONS') next()
   else {
     const token = req.body.token || req.query.token || req.headers['authorization']
     if (!token) return res.status(403).send({ errors: ['token not provided'] })

@@ -10,12 +10,11 @@ function submit(values, url) {
         { type: USER_FETCHED, payload: res.data }
       ]))
       .catch(err => {
-        console.log(err)
-        // const errors = err.response.data.errors
-        // for (const key in errors) {
-        //   let error = errors[key].message
-        //   toastr.error('Erro', error)
-        // }
+        const errors = err.response.data.errors
+        for (const key in errors) {
+          let error = errors[key].message
+          toastr.error('Erro', error)
+        }
       })
   }
 }
